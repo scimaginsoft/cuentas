@@ -81,3 +81,14 @@ create table tbl_ahorros(
     foreign key (int_usuario) references tbl_usuarios(int_usuario),
     primary key (int_ahorro)
 )engine = innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+
+create table tbl_pagos(
+	int_pago int not null auto_increment,
+	int_egreso int not null,
+	int_cuenta int not null,
+	dbl_monto double(16,8) not null,
+	dat_fecha_registro date not null,
+	foreign key (int_egreso) references tbl_egresos(int_egreso),
+	foreign key (int_cuenta) references cat_cuentas(int_cuenta),
+	primary key (int_pago)
+)engine = innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
