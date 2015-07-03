@@ -46,4 +46,93 @@ class TblIngreso extends DB
 	{
 		return $this->intCatCuenta;
 	}
+	
+	public function set_dblMonto($par_dblMonto)
+	{
+		$this->dblMonto = $par_dblMonto;
+	}
+	
+	public function get_dblMonto()
+	{
+		return $this->dblMonto;
+	}
+	
+	public function set_datFechaRegistro($par_datFechaRegistro)
+	{
+		$this->datFechaRegistro = $par_datFechaRegistro;
+	}
+	
+	public function get_datFechaRegistro()
+	{
+		return $this->datFechaRegistro;
+	}
+	
+	public function set_intUsuario($par_intUsuario)
+	{
+		$this->intUsuario = $par_intUsuario;
+	}
+	
+	public function get_intUsuario()
+	{
+		return $this->intUsuario;
+	}
+	
+	public function insert()
+	{
+		$query = "INSERT INTO tbl_ingresos (int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario) 
+					VALUES (:intCatIngreso, :intCatCuenta, :dblMonto, :datFechaRegistro, :intUsuario)";
+		$params = array(
+				"intCatIngreso" => $this->intCatIngreso,
+				"intCatCuenta" => $this->intCatCuenta,
+				"dblMonto" => $this->dblMonto,
+				"datFechaRegistro" => $this->datFechaRegistro,
+				"intUsuario" => $this->intUsuario
+		);
+		$insert = $this->db->query($query, $params);
+		return $insert;
+	}
+	
+	public function delete($intIngreso)
+	{
+		$query = "DELETE FROM tbl_ingresos WHERE int_ingreso = :intIngreso";
+		$params = array(
+				"intIngreso" => $intIngreso
+		);
+		$delete = $this->db->query($query, $params);
+		return $delete;
+	}
+	
+	public function update($intIngreso)
+	{
+		$query = "UPDATE tbl_ingresos SET int_cat_ingreso = :intCatIngreso AND int_cat_cuenta = :intCatCuenta 
+					AND dbl_monto = :dblMonto AND dat_fecha_registro = :datFechaRegistro AND int_usuario = :intUsuario 
+					WHERE int_ingreso = :intIngreso";
+		$params = array(
+				"intCatIngreso" => $this->intCatIngreso,
+				"intCatCuenta" => $this->intCatCuenta,
+				"dblMonto" => $this->dblMonto,
+				"datFechaRegistro" => $this->datFechaRegistro,
+				"intUsuario" => $this->intUsuario,
+				"intIngreso" => $intIngreso
+		);
+		$update = $this->db->query($query, $params);
+		return $update;
+	}
+	
+	public function select() 
+	{
+		$query = "SELECT int_ingreso, int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario 
+					FROM tbl_ingresos";
+		$select = $this->db->query($query);
+		return $query;
+	}
+	
+	public function single($intIngreso)
+	{
+		$query = "SELECT int_ingreso, int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario
+					FROM tbl_ingresos WHERE int_ingreso = :intIngreso";
+		$params = array("intIngreso" => $intIngreso);
+		$select = $this->db->query($query, $params);
+		return $query;
+	}
 }
