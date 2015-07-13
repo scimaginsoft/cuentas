@@ -68,11 +68,15 @@ class CatBanco extends DB
 	
 	public function single($intBanco)
 	{
-		$query = "SELECT int_banco, str_banco FROM cat_bancos WHERE int_banco = :intBanco";
-		$params = array(
-				"intBanco" => $intBanco
-		);
-		$single = $this->db->single($query, $params);
+		if(!empty($intBanco) && is_int($intBanco)) {
+			$query = "SELECT int_banco, str_banco FROM cat_bancos WHERE int_banco = :intBanco";
+			$params = array(
+					"intBanco" => $intBanco
+			);
+
+			$single = $dbh->single($query, $params);
+		}
+		
 		return $single;
 	}
 }

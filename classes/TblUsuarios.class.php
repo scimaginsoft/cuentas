@@ -108,6 +108,12 @@ class TblUsuario extends DB
 	
 	public function login($username, $clave)
 	{
-		
+		$query = "SELECT int_usuario, str_username, str_clave FROM tbl_usuarios WHERE str_username = :strUsername AND str_clave = :strClave";
+		$params = array(
+				"strUsername" => $username,
+				"strClave" => $clave
+		);
+		$login = $this->db->query($query, $params);
+		return $login;
 	}
 }
