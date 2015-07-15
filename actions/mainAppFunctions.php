@@ -199,7 +199,7 @@ function selectCuenta()
 	}
 }
 
-function findBanco($intCuenta)
+function findCuenta($intCuenta)
 {
 	if(!empty($intCuenta) && is_int($intCuenta)) {
 		$query = "SELECT int_cuenta, int_banco, str_cuenta FROM cat_cuentas WHERE int_cuenta = :intCuenta";

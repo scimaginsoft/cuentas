@@ -28,10 +28,13 @@ if(isset($_POST) && !empty($_POST) && isset($_POST['accion']) && !empty($_POST['
 
 	switch ($_POST['accion']) {
 		case 'login':
-			$appResponse['respuesta'] = userLogin($_POST['userName'], md5($_POST['clave']))
+			$userName = (isset($_POST['userName'])) ? $_POST['userName'] : '';
+			$clave = (isset($_POST['clave'])) ? $_POST['clave'] : '';
+
+			$appResponse['respuesta'] = userLogin($userName, md5($clave));
 
 			if($appResponse['respuesta'] == true) {
-				header("Location dashboard.php");
+				$appResponse['mensaje'] = "exito";
 			}else {
 				$appResponse['respuesta'] = false;
 				$appResponse['mensaje']		= "Error! Usuario y/o Contraseña Incorrectos";
