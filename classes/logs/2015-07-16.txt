@@ -1,0 +1,4 @@
+Time : 16:03:22
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<br>' at line 2
+Raw SQL : SELECT int_usuario, str_usuario, str_username, str_clave FROM tbl_usuarios WHERE str_username = :strUsername 
+				AND str_clave = :strClave LIMIT 1<br>

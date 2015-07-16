@@ -28,8 +28,8 @@ if(isset($_POST) && !empty($_POST) && isset($_POST['accion']) && !empty($_POST['
 
 	switch ($_POST['accion']) {
 		case 'login':
-			$userName = (isset($_POST['userName'])) ? $_POST['userName'] : '';
-			$clave = (isset($_POST['clave'])) ? $_POST['clave'] : '';
+			$userName = (isset($_POST['strUsername'])) ? $_POST['strUsername'] : '';
+			$clave = (isset($_POST['strClave'])) ? $_POST['strClave'] : '';
 
 			$appResponse['respuesta'] = userLogin($userName, md5($clave));
 

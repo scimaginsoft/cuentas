@@ -1,7 +1,7 @@
 <?php
 require_once '../classes/Db.class.php';
 
-$dbh = new DB();
+
 
 // ================================================= //
 // ============== Funcion para login =============== //
@@ -10,6 +10,8 @@ $dbh = new DB();
 function userLogin($userName, $clave) 
 {
 	$loginResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($userName) && !empty($clave)) {
 		$query = "SELECT int_usuario, str_usuario, str_username, str_clave FROM tbl_usuarios WHERE str_username = :strUsername 
@@ -20,13 +22,16 @@ function userLogin($userName, $clave)
 		);
 
 		$login = $dbh->query($query, $params);
-
+		
 		if(count($login) != 0) {
 			$loginResponse = true;
 
+			$usuario = (isset($login['str_usuario'])) ? $_POST['str_usuario'] : '';
+			$intUsuario = (isset($login['int_usuario'])) ? $_POST['int_usuario'] : '';
+
 			$_SESSION['userLogin'] 	= true;
-			$_SESSION['userName']	= $login['str_usuario'];
-			$_SESSION['userID']		= $login['int_usuario'];
+			$_SESSION['userName']	= $usuario;
+			$_SESSION['userID']		= $intUsuario;
 		}
 	}
 	return $loginResponse;

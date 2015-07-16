@@ -1,2 +1,80 @@
+Time : 16:00:56
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:26
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:25
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:24
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:23
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:23
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:23
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:22
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:22
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:22
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:21
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:21
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:20
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:19
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
+Time : 16:00:15
+SQLSTATE[HY000] [1049] Unknown database 'mycuentas'
+
 Time : 04:52:56
 SQLSTATE[HY000] [1049] Unknown database 'cuentas'
