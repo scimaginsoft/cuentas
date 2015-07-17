@@ -14,9 +14,7 @@
 * 12.- Alta tabla usuarios (No se incluira de momento)
 */
 
-session_name('mycuentas');
 session_start();
-
 $appResponse = array(
 	'respuesta' => false,
 	'mensaje'	=> "Error en la Aplicación"
@@ -31,7 +29,7 @@ if(isset($_POST) && !empty($_POST) && isset($_POST['accion']) && !empty($_POST['
 			$userName = (isset($_POST['strUsername'])) ? $_POST['strUsername'] : '';
 			$clave = (isset($_POST['strClave'])) ? $_POST['strClave'] : '';
 
-			$appResponse['respuesta'] = userLogin($userName, md5($clave));
+			$appResponse['respuesta'] = userLogin(strtolower($userName), md5($clave));
 
 			if($appResponse['respuesta'] == true) {
 				$appResponse['mensaje'] = "exito";

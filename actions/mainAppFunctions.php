@@ -1,8 +1,6 @@
 <?php
 require_once '../classes/Db.class.php';
 
-
-
 // ================================================= //
 // ============== Funcion para login =============== //
 // ================================================= //
@@ -26,8 +24,10 @@ function userLogin($userName, $clave)
 		if(count($login) != 0) {
 			$loginResponse = true;
 
-			$usuario = (isset($login['str_usuario'])) ? $_POST['str_usuario'] : '';
-			$intUsuario = (isset($login['int_usuario'])) ? $_POST['int_usuario'] : '';
+			foreach ($login as $valor) {
+				$usuario 	= isset($valor['str_usuario']) ? $valor['str_usuario'] : '';
+				$intUsuario = isset($valor['int_usuario']) ? $valor['int_usuario'] : '';
+			}
 
 			$_SESSION['userLogin'] 	= true;
 			$_SESSION['userName']	= $usuario;
@@ -44,6 +44,8 @@ function userLogin($userName, $clave)
 function insertBanco($strBanco)
 {
 	$bancoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($strBanco)) {
 		$query = "INSERT INTO cat_bancos (str_banco) VALUES (:strBanco)";
@@ -64,6 +66,8 @@ function deleteBanco($intBanco)
 {
 	$bancoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intBanco) && is_int($intBanco)) {
 		$query = "DELETE FROM cat_bancos WHERE int_banco = :intBanco";
 		$params = array(
@@ -83,6 +87,8 @@ function updateBanco($intBanco, $strBanco)
 {
 	$bancoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intBanco) && !empty($strBanco) && is_int($intBanco)) {
 		$query = "UPDATE cat_bancos SET str_banco = :strBanco WHERE int_banco = :intBanco";
 		$params = array(
@@ -101,6 +107,8 @@ function updateBanco($intBanco, $strBanco)
 
 function selectBanco()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_banco, str_banco FROM cat_bancos";
 	$select = $dbh->query($query);
 
@@ -113,6 +121,8 @@ function selectBanco()
 
 function findBanco($intBanco)
 {
+	$dbh = new DB();
+
 	if(!empty($intBanco) && is_int($intBanco)) {
 		$query = "SELECT int_banco, str_banco FROM cat_bancos WHERE int_banco = :intBanco";
 		$params = array(
@@ -135,6 +145,8 @@ function insertCuenta($intBanco, $strCuenta)
 {
 	$cuentaResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intBanco) && !empty($strCuenta) && is_numeric($intBanco)) {
 		$query = "INSERT INTO cat_cuentas (int_banco, str_cuenta) VALUES (:intBanco, :strCuenta)";
 		$params = array(
@@ -155,6 +167,8 @@ function deleteCuenta($intCuenta)
 {
 	$cuentaResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intCuenta) && is_int($intCuenta)) {
 		$query = "DELETE FROM cat_cuentas WHERE int_cuenta = :intCuenta";
 		$params = array(
@@ -173,6 +187,8 @@ function deleteCuenta($intCuenta)
 function updateCuenta($intCuenta, $strCuenta, $intBanco)
 {
 	$cuentaResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intCuenta) && !empty($strCuenta) && !empty($intBanco) && is_int($intCuenta) && is_int($intBanco)) {
 		$query = "UPDATE cat_cuentas SET int_banco = :intBanco AND str_cuenta = :strCuenta WHERE int_cuenta = :intCuenta";
@@ -194,6 +210,8 @@ function updateCuenta($intCuenta, $strCuenta, $intBanco)
 
 function selectCuenta()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_cuenta, int_banco, str_cuenta FROM cat_cuentas";
 	$select = $dbh->query($query);
 
@@ -206,6 +224,8 @@ function selectCuenta()
 
 function findCuenta($intCuenta)
 {
+	$dbh = new DB();
+
 	if(!empty($intCuenta) && is_int($intCuenta)) {
 		$query = "SELECT int_cuenta, int_banco, str_cuenta FROM cat_cuentas WHERE int_cuenta = :intCuenta";
 		$params = array(
@@ -228,6 +248,8 @@ function insertEgreso($strEgreso)
 {
 	$egresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($strEgreso)) {
 		$query = "INSERT INTO cat_egresos (str_egreso) VALUES (:strEgreso)";
 		$params = array(
@@ -246,6 +268,8 @@ function insertEgreso($strEgreso)
 function deleteEgreso($intEgreso)
 {
 	$egresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intEgreso) && is_int($intEgreso)) {
 		$query = "DELETE FROM cat_egresos WHERE int_egreso = :intEgreso";
@@ -266,6 +290,8 @@ function updateEgreso($intEgreso, $strEgreso)
 {
 	$egresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intEgreso) && !empty($strEgreso) && is_int($intEgreso)) {
 		$query = "UPDATE cat_egresos SET str_egreso = :strEgreso WHERE int_egreso = :intEgreso";
 		$params = array(
@@ -284,6 +310,8 @@ function updateEgreso($intEgreso, $strEgreso)
 
 function selectEgreso()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_egreso, str_egreso FROM cat_egresos";
 	$select = $dbh->query($query);
 
@@ -296,6 +324,8 @@ function selectEgreso()
 
 function findEgreso($intEgreso)
 {
+	$dbh = new DB();
+
 	if(!empty($intEgreso) && is_int($intEgreso)) {
 		$query = "SELECT int_egreso, str_egreso FROM cat_egresos WHERE int_egreso = :intEgreso";
 		$params = array(
@@ -318,6 +348,8 @@ function insertIngreso($strIngreso)
 {
 	$ingresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($strIngreso)) {
 		$query = "INSERT INTO cat_ingresos (str_ingreso) VALUES (:strIngreso)";
 		$params = array(
@@ -336,6 +368,8 @@ function insertIngreso($strIngreso)
 function deleteIngreso($intIngreso)
 {
 	$ingresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intIngreso) && is_int($intIngreso)) {
 		$query = "DELETE FROM cat_ingresos WHERE int_ingreso = :intIngreso";
@@ -356,6 +390,8 @@ function updateIngreso($intIngreso, $strIngreso)
 {
 	$ingresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intIngreso) && !empty($strIngreso) && is_int($intIngreso)) {
 		$query = "UPDATE cat_ingresos SET str_ingreso = :strIngreso WHERE int_ingreso = :intIngreso";
 		$params = array(
@@ -374,6 +410,8 @@ function updateIngreso($intIngreso, $strIngreso)
 
 function selectIngreso()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_ingreso, str_ingreso FROM cat_ingresos";
 	$select = $dbh->query($query);
 
@@ -386,6 +424,8 @@ function selectIngreso()
 
 function findIngreso($intIngreso)
 {
+	$dbh = new DB();
+
 	if(!empty($intIngreso) && is_int($intIngreso)) {
 		$query = "SELECT int_ingreso, str_ingreso FROM cat_ingresos WHERE int_ingreso = :intIngreso";
 		$params = array(
@@ -407,6 +447,8 @@ function findIngreso($intIngreso)
 function insertTblEgreso($intCatEgreso, $intCatCuenta, $dblMonto, $datFechaRegistro, $intUsuario)
 {
 	$tblEgresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intCatEgreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
 		&& is_int($intCatEgreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario)) {
@@ -434,6 +476,8 @@ function deleteTblEgreso($intEgreso)
 {
 	$tblEgresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intEgreso) && is_int($intEgreso)) {
 		$query = "DELETE FROM tbl_egresos WHERE int_egreso = :intEgreso";
 		$params = array(
@@ -452,6 +496,8 @@ function deleteTblEgreso($intEgreso)
 function updateTblEgreso($intCatEgreso, $intCatCuenta, $dblMonto, $datFechaRegistro, $intUsuario, $intEgreso)
 {
 	$tblEgresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intCatEgreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
 		&& !empty($intEgreso) && is_int($intCatEgreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario) 
@@ -479,6 +525,8 @@ function updateTblEgreso($intCatEgreso, $intCatCuenta, $dblMonto, $datFechaRegis
 
 function selectTblEgreso()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_egreso, int_cat_egreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario 
 					FROM tbl_egresos";
 	$select = $dbh->query($query);
@@ -492,6 +540,8 @@ function selectTblEgreso()
 
 function findTblEgreso($intEgreso)
 {
+	$dbh = new DB();
+
 	if(!empty($intEgreso) && is_int($intEgreso)) {
 		$query = "SELECT int_egreso, int_cat_egreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario
 					FROM tbl_egresos WHERE int_egreso = :intEngreso";
@@ -514,6 +564,8 @@ function findTblEgreso($intEgreso)
 function insertTblIngreso($intCatIngreso, $intCatCuenta, $dblMonto, $datFechaRegistro, $intUsuario)
 {
 	$tblIngresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intCatIngreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
 		&& is_int($intCatIngreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario)) {
@@ -541,6 +593,8 @@ function deleteTblIngreso($intIngreso)
 {
 	$tblIngresoResponse = false;
 
+	$dbh = new DB();
+
 	if(!empty($intIngreso) && is_int($intIngreso)) {
 		$query = "DELETE FROM tbl_ingresos WHERE int_ingreso = :intIngreso";
 		$params = array(
@@ -559,6 +613,8 @@ function deleteTblIngreso($intIngreso)
 function updateTblIngreso($intCatIngreso, $intCatCuenta, $dblMonto, $datFechaRegistro, $intUsuario, $intIngreso)
 {
 	$tblIngresoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intCatIngreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
 		&& !empty($intIngreso) && is_int($intCatEgreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario) 
@@ -586,6 +642,8 @@ function updateTblIngreso($intCatIngreso, $intCatCuenta, $dblMonto, $datFechaReg
 
 function selectTblIngreso()
 {
+	$dbh = new DB();
+
 	$query = "SELECT int_ingreso, int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario 
 					FROM tbl_ingresos";
 	$select = $dbh->query($query);
@@ -599,6 +657,8 @@ function selectTblIngreso()
 
 function findTblIngreso($intIngreso)
 {
+	$dbh = new DB();
+
 	if(!empty($intIngreso) && is_int($intIngreso)) {
 		$query = "SELECT int_ingreso, int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario
 					FROM tbl_ingresos WHERE int_ingreso = :intIngreso";
@@ -621,6 +681,8 @@ function findTblIngreso($intIngreso)
 function insertTblPago($intEgreso, $intCuenta, $dblMonto, $datFechaRegistro)
 {
 	$tblPagoResponse = false;
+
+	$dbh = new DB();
 
 	if(!empty($intEgreso) && !empty($intCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && is_int($intEgreso) 
 		&& is_int($intCuenta) && is_double($dblMonto)) {
