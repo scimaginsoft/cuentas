@@ -13,7 +13,7 @@ if(isset($_SESSION['userLogin']) && $_SESSION['userLogin'] == true) {
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Mycuentas | Dashboard</title>
+	<title>Mycuentas | Registra Ingresos</title>
 	<!-- All the files that are required -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -71,14 +71,14 @@ if(isset($_SESSION['userLogin']) && $_SESSION['userLogin'] == true) {
 			<!-- Main Menu -->
 			<div class="side-menu-container">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="principal.php"><span class="glyphicon glyphicon-th"></span> Dashboard</a></li>
+					<li><a href="principal.php"><span class="glyphicon glyphicon-th"></span> Dashboard</a></li>
 					<li><a href="cat-banco.php"><span class="glyphicon glyphicon-home"></span>Catálogo Bancos</a></li>
 					<li><a href="cat-cuenta.php"><span class="glyphicon glyphicon-cloud"></span>Catálogo Cuentas</a></li>
 					<li><a href="cat-egreso.php"><span class="glyphicon glyphicon-remove"></span>Catálogo Egresos</a></li>
 					<li><a href="cat-ingreso.php"><span class="glyphicon glyphicon-download-alt"></span>Catálogo Ingresos</a></li>
 					<li><a href="reg-ahorro.php"><span class="glyphicon glyphicon-usd"></span>Registrar Ahorro</a></li>
-					<li><a href="reg-egerso.php"><span class="glyphicon glyphicon-remove-sign"></span>Registrar Egreso</a></li>
-					<li><a href="reg-ingreso.php"><span class="glyphicon glyphicon-ok-sign"></span>Registrar Ingreso</a></li>
+					<li><a href="reg.egreso.php"><span class="glyphicon glyphicon-remove-sign"></span>Registrar Egreso</a></li>
+					<li class="active"><a href="reg-ingreso.php"><span class="glyphicon glyphicon-ok-sign"></span>Registrar Ingreso</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
@@ -88,15 +88,34 @@ if(isset($_SESSION['userLogin']) && $_SESSION['userLogin'] == true) {
   		<div class="col-md-10 content">
   			  <div class="panel panel-default">
 	<div class="panel-heading">
-		Dashboard
+		Registrar Ingreso
 	</div>
 	<div class="panel-body">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<form action="" id="Registra_Ingreso_Form">
+			<div class="col-md-8">
+				<div class="form-group">
+					<label for="intIngreso">Ingreso</label>
+					<select name="intIngreso" id="intIngreso" class="form-control"></select>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="form-group">
+					<label for="intCuenta">Cuenta</label>
+					<select name="intCuenta" id="intCuenta" class="form-control"></select>
+				</div>
+			</div>  
+			<div class="col-md-8">
+				<div class="form-group">
+					<label for="dblMonto">Cantidad</label>
+					<input type="text" class="form-control" name="dblMonto" id="dblMonto" placeholder="Cantidad"/>
+				</div>
+			</div>   
+			<input type="hidden" name="accion" id="accion" value="registrar-ingreso" />
+			<input type="hidden" name="intUsuario" id="intUsuario" value="<?= $userID; ?>">
+			<div class="col-md-8">
+				<input type="submit" class="btn btn-lg btn-primary btn-lg" name="Agrega-ingreso" value="Agregar" />
+			</div> 				
+		</form>
 	</div>
 </div>
   		</div>

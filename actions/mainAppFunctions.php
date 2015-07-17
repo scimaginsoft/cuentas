@@ -450,8 +450,7 @@ function insertTblEgreso($intCatEgreso, $intCatCuenta, $dblMonto, $datFechaRegis
 
 	$dbh = new DB();
 
-	if(!empty($intCatEgreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
-		&& is_int($intCatEgreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario)) {
+	if(!empty($intCatEgreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario)) {
 		$query = "INSERT INTO tbl_egresos (int_cat_egreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario) 
 					VALUES (:intCatEgreso, :intCatCuenta, :dblMonto, :datFechaRegistro, :intUsuario)";
 		$params = array(
@@ -461,7 +460,7 @@ function insertTblEgreso($intCatEgreso, $intCatCuenta, $dblMonto, $datFechaRegis
 				"datFechaRegistro" 	=> $datFechaRegistro,
 				"intUsuario" 		=> $intUsuario
 		);
-
+		
 		$insert = $dbh->query($query, $params);
 
 		if($insert == 1) {
@@ -567,8 +566,7 @@ function insertTblIngreso($intCatIngreso, $intCatCuenta, $dblMonto, $datFechaReg
 
 	$dbh = new DB();
 
-	if(!empty($intCatIngreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario) 
-		&& is_int($intCatIngreso) && is_int($intCatCuenta) && is_double($dblMonto) && is_int($intUsuario)) {
+	if(!empty($intCatIngreso) && !empty($intCatCuenta) && !empty($dblMonto) && !empty($datFechaRegistro) && !empty($intUsuario)) {
 		$query = "INSERT INTO tbl_ingresos (int_cat_ingreso, int_cat_cuenta, dbl_monto, dat_fecha_registro, int_usuario) 
 					VALUES (:intCatIngreso, :intCatCuenta, :dblMonto, :datFechaRegistro, :intUsuario)";
 		$params = array(
